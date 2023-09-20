@@ -1,0 +1,37 @@
+{
+    "products": [
+        {
+            "userId": 1,
+            "id": 1,
+            "title": "Peli1",
+            "descripcion": "Terror",
+            "price": 2500,
+            "thumbnail": "https://www.cinepolis.com.ar/peliculas/la-noche-del-demonio-la-puerta-roja",
+            "code": "ADJ",
+            "stock": 5
+        },
+
+        {
+            "userId": 2,
+            "id": 2,
+            "title": "Peli2",
+            "descripcion": "Animacion",
+            "price": 2500,
+            "thumbnail": "https://www.netflix.com/ar/title/81582346",
+            "code": "BKJ",
+            "stock": 5
+        },
+
+        {
+            "userId": 3,
+            "id": 3,
+            "title": "Peli1",
+            "descripcion": "Animacion",
+            "price": 2500,
+            "thumbnail": "https://www.netflix.com/ar/title/81582346",
+            "code": "ADJ",
+            "stock": 5
+        }
+
+    ]
+}

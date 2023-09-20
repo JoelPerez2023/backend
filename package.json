@@ -1,0 +1,18 @@
+{
+  "name": "entrega1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "babel --plugins @babel/plugin-transform-property-mutators src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.22.15",
+    "@babel/core": "^7.22.20",
+    "@babel/plugin-transform-property-mutators": "^7.22.15",
+    "@babel/preset-env": "^7.22.20"
+  }
+}
