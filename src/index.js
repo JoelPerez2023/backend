@@ -1,3 +1,9 @@
+const fs = require('fs');
+let data = fs.readFileSync('./src/data/product.json');
+let product = JSON.parse(data);
+console.log(typeof(product));
+
+
 class ProductManager {
   constructor() {
     this.products = [];
@@ -32,6 +38,14 @@ class ProductManager {
     return this.products;
   }
 
+  deleteProduct(id) {
+    const index = this.products.findIndex(product => product.id === id);
+    if (index !== -1) {
+      this.products.splice(index, 1);
+      return true; // Producto eliminado con éxito
+    }
+    return false; // No se encontró ningún producto con el ID especificado
+  }
 
   
 }
@@ -41,6 +55,7 @@ const miTienda = new ProductManager();
 miTienda.addProduct("Peli1", "Terror", "ADJ", 3000, "https://www.cinepolis.com.ar/peliculas/la-noche-del-demonio-la-puerta-roja", 10);
 miTienda.addProduct("Peli2", "Animacion", "BKJ", 3000, "https://www.netflix.com/ar/title/81582346", 5);
 miTienda.addProduct("Peli3", "Animacion", "ADJ", 4000, "https://www.netflix.com/ar/title/81582346", 10); // Intento de agregar un producto con el mismo código
+miTienda.addProduct("Peli4", "Animacion", "CKJ", 4000, "https://www.netflix.com/ar/title/81582346", 10);
 const products = miTienda.getProductsById();
 console.log(products);
 
@@ -83,9 +98,64 @@ console.log(products);
 // Ahora, productos solo contendrá los productos con IDs diferentes a 2
 console.log(products);
 
+const productIdToDelete = 3;
+if (miTienda.deleteProduct(productIdToDelete)) {
+  console.log(`Producto con ID ${productIdToDelete} eliminado con éxito.`);
+} else {
+  console.log(`No se encontró ningún producto con ID ${productIdToDelete}.`);
+}
+
+// Ahora eliminaria el producto 2
+console.log(products);
 
 
 
 
+// const fs = require('fs'); // Módulo para trabajar con archivos
 
+// // Ruta al archivo JSON
+// let data = fs.readFileSync('./src/data/products.json');
+
+// // Función para eliminar un producto por su ID
+// function deleteProduct(idToDelete) {
+//   // Leer el contenido actual del archivo JSON
+//   fs.readFile(filePath, 'utf8', (err, data) => {
+//     if (err) {
+//       console.error('Error al leer el archivo JSON:', err);
+//       return;
+//     }
+
+//     // Convertir el contenido del archivo JSON en un objeto JavaScript
+//     let product = JSON.parse(data);
+    
+//     console.log(product);
+//     console.log(typeof(product));
+
+//     // Buscar el índice del producto con el ID proporcionado
+//     const deleteProduct = product.find(product => product.id === idToDelete);
+
+//     // Si se encontró el producto, eliminarlo del array
+//     if (deleteProduct !== -1) {
+//       product.splice(deleteProduct, 1);
+
+//       // Convertir el objeto actualizado de nuevo a formato JSON
+//       const updatedData = JSON.stringify(product, null, 2);
+
+//       // Escribir el JSON actualizado de vuelta al archivo
+//       fs.writeFile(filePath, updatedData, 'utf8', (err) => {
+//         if (err) {
+//           console.error('Error al escribir el archivo JSON:', err);
+//           return;
+//         }
+//         console.log(`Producto con ID ${idToDelete} eliminado correctamente.`);
+//       });
+//     } else {
+//       console.log(`No se encontró ningún producto con ID ${idToDelete}.`);
+//     }
+//   });
+// }
+
+// // Uso de la función para eliminar un producto por su ID
+// const idToDelete = '3';
+// deleteProduct(idToDelete);
 
